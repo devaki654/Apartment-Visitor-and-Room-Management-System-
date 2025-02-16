@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor List - Skyline Heights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+        th {
+            background: #28a745;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Visitor List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Apartment</th>
+                    <th>Purpose</th>
+                    <th>Host</th>
+                </tr>
+            </thead>
+            <tbody id="visitorTableBody">
+                <!-- Data will be populated here -->
+            </tbody>
+        </table>
+        <a href="index.html">Back to Entry Form</a>
+    </div>
+
+    <script>
+        fetch("http://localhost:3000/get-visitors")
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById("visitorTableBody");
+                tableBody.innerHTML = ""; // Clear previous content
+                data.forEach(visitor => {
+                    const row = `<tr>
+                        <td>${visitor.visitor_name}</td>
+                        <td>${visitor.phone_number}</td>
+                        <td>${visitor.apartment_number}</td>
+                        <td>${visitor.purpose}</td>
+                        <td>${visitor.host_name}</td>
+                    </tr>`;
+                    tableBody.innerHTML += row;
+                });
+            })
+            .catch(error => console.error("Error:", error));
+    </script>
+</body>
+</html>
+    

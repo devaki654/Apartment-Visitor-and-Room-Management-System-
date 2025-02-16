@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crowny Hotel</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha512-UTNP5BXLIptsaj5WdKFrkFov94lDx+eBvbKyoe1YAfjeRPC+gT5kyZ10kOHCfNZqEui1sxmqvodNUx3KbuYI/A==" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  <style>
+    .content { margin-top: 20px; }
+    .owl-carousel .items { padding: 15px; border: 1px solid #ddd; border-radius: 10px; text-align: center; }
+    .image img { width: 100%; height: auto; border-radius: 10px; }
+    .rate i { color: gold; }
+    .button { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .primary-btn { background: #007BFF; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; }
+</style>
+</head>
+</head>
+<body>
+  <header>
+    <div class="content flex_space">
+      <div class="logo">
+        <img src="images/logo.png" alt="">
+      </div>
+      <div class="navlinks">
+        <ul id="menulist">
+          <li><a href="login.html">home</a> </li>
+          <li><a href="about.html">about</a> </li>
+          <li><a href="room.html">rooms</a> </li>
+          <li><a href="se.html">Service</a> </li>
+          
+          <li><a href="con.html">contact</a> </li>
+          <li> <i class="fa fa-search"></i> </li>
+        
+        </ul>
+        <span class="fa fa-bars" onclick="menutoggle()"></span>
+      </div>
+    </div>
+  </header>
+  <script>
+    var menulist = document.getElementById('menulist');
+    menulist.style.maxHeight = "0px";
+
+    function menutoggle() {
+      if (menulist.style.maxHeight == "0px") {
+        menulist.style.maxHeight = "100vh";
+      } else {
+        menulist.style.maxHeight = "0px";
+      }
+    }
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.js" integrity="sha512-gY25nC63ddE0LcLPhxUJGFxa2GoIyA5FLym4UJqHDEMHjp8RET6Zn/SHo1sltt3WuVtqfyxECP38/daUc/WVEA==" crossorigin="anonymous"
+    referrerpolicy="no-referrer"></script>
+  <script>
+    $('.owl-carousel').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      dots: false,
+      navText: ["<i class = 'fa fa-chevron-left'></i>", "<i class = 'fa fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 1
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+  </script>
+
+  <section class="counter top">
+    <div class="container grid">
+      <div class="box">
+        <h1>2500</h1>
+        <hr>
+        <span>Customer</span>
+      </div>
+      <div class="box">
+        <h1>1250</h1>
+        <hr>
+        <span>Happy Customer</span>
+      </div>
+      <div class="box">
+        <h1>150</h1>
+        <hr>
+        <span>Expert Technicians</span>
+      </div>
+      <div class="box">
+        <h1>3550</h1>
+        <hr>
+        <span>Desktop Reaired</span>
+      </div>
+    </div>
+  </section>
+  <section class="rooms">
+    <div class="container top">
+      <div class="heading">
+        <h1>EXPOLRE</h1>
+        <h2>Our Rooms</h2>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        </p>
+      </div>
+
+      <div class="content mtop">
+        <div class="owl-carousel owl-carousel1 owl-theme">
+          <div class="items" data-room="101" data-name="2-Bedroom Apartments">
+            <div class="image"><img src="images/room-1.png" alt=""></div>
+            <div class="text">
+                <h2>Room 101: 2-Bedroom Apartments</h2>
+                <div class="rate flex">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <p>Larger units with additional bedrooms and living space.</p>
+                <div class="button flex">
+                    <button class="primary-btn book-now">BOOK NOW</button>
+                    <h3>$7000 <span><br> Per Night</span></h3>
+                </div>
+            </div>
+        </div>
+    
+            <div class="items" data-room="102" data-name="2-Bedroom Apartments">
+              <div class="image"><img src="images/room-2.png" alt=""></div>
+              <div class="text">
+                  <h2>Room 102: 2-Bedroom Apartments</h2>
+                  <div class="rate flex">
+                      <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                  </div>
+                  <p>Larger units with additional bedrooms and living space.</p>
+                  <div class="button flex">
+                      <button class="primary-btn book-now">BOOK NOW</button>
+                      <h3>$7000 <span><br> Per Night</span></h3>
+                  </div>
+              </div>
+          </div>
+    
+          <div class="items" data-room="103" data-name="Superior Apartments">
+            <div class="image"><img src="images/room-3.png" alt=""></div>
+            <div class="text">
+                <h2>Room 103 2-Bedroom Apartments</h2>
+                <div class="rate flex">
+                    <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+                </div>
+                <p>Larger units with additional bedrooms and living space.</p>
+                <div class="button flex">
+                    <button class="primary-btn book-now">BOOK NOW</button>
+                    <h3>$7500 <span><br> Per Night</span></h3>
+                </div>
+            </div>
+        </div>
+    
+        <div class="items" data-room="104" data-name="AC Apartments">
+          <div class="image"><img src="images/room-4.png" alt=""></div>
+          <div class="text">
+              <h2>Room 104: 2-Bedroom Apartments</h2>
+              <div class="rate flex">
+                  <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+              </div>
+              <p>Larger units with additional bedrooms and living space.</p>
+              <div class="button flex">
+                  <button class="primary-btn book-now">BOOK NOW</button>
+                  <h3>$5000 <span><br> Per Night</span></h3>
+              </div>
+          </div>
+      </div>
+    
+      <div class="items" data-room="105" data-name="2-Bedroom Apartments">
+        <div class="image"><img src="images/room-5.png" alt=""></div>
+        <div class="text">
+            <h2>Room 105: 2-Bedroom Apartments</h2>
+            <div class="rate flex">
+                <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+            </div>
+            <p>Larger units with additional bedrooms and living space.</p>
+            <div class="button flex">
+                <button class="primary-btn book-now">BOOK NOW</button>
+                <h3>$9000 <span><br> Per Night</span></h3>
+            </div>
+        </div>
+    </div>
+    
+    <div class="items" data-room="106" data-name="3-Bedroom Apartments">
+      <div class="image"><img src="images/room-6.png" alt=""></div>
+      <div class="text">
+          <h2>Room 106: 2-Bedroom Apartments</h2>
+          <div class="rate flex">
+              <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+          </div>
+          <p>Larger units with additional bedrooms and living space.</p>
+          <div class="button flex">
+              <button class="primary-btn book-now">BOOK NOW</button>
+              <h3>$10000 <span><br> Per Night</span></h3>
+          </div>
+      </div>
+  </div>
+    
+  <div class="items" data-room="107" data-name="Superior AC Apartments">
+    <div class="image"><img src="images/room-7.png" alt=""></div>
+    <div class="text">
+        <h2>Room 107: 2-Bedroom Apartments</h2>
+        <div class="rate flex">
+            <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i>
+        </div>
+        <p>Larger units with additional bedrooms and living space.</p>
+        <div class="button flex">
+            <button class="primary-btn book-now">BOOK NOW</button>
+            <h3>$11000 <span><br> Per Night</span></h3>
+        </div>
+    </div>
+</div>
+    
+        </div>
+    </div>
+    
+    <script>
+        $('.owl-carousel1').owlCarousel({
+            loop: true,
+            margin: 40,
+            nav: true,
+            dots: false,
+            navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+            responsive: {
+                0: {
+                    items: 1
+                },
+                768: {
+                    items: 2,
+                    margin: 10,
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
+    $(document).ready(function () {
+        $('.owl-carousel1').owlCarousel({
+            loop: true,
+            margin: 40,
+            nav: true,
+            dots: false,
+            navText: ["<i class='fa fa-chevron-left'></i>", "<i class='fa fa-chevron-right'></i>"],
+            responsive: {
+                0: { items: 1 },
+                768: { items: 2, margin: 10 },
+                1000: { items: 3 }
+            }
+        });
+        document.querySelectorAll('.book-now').forEach(button => {
+    button.addEventListener('click', function () {
+        let roomElement = this.closest('.items');
+        let roomNumber = roomElement.getAttribute('data-room');  // Get room number
+        let roomName = roomElement.getAttribute('data-name');    // Get room name
+        let amount = roomElement.querySelector('h3').textContent.trim().split(' ')[0].replace('$', ''); // Extract price
+
+        // Redirect to order.html with all details in the URL
+        window.location.href = `order.html?room=${roomNumber}&name=${encodeURIComponent(roomName)}&amount=${amount}`;
+    });
+});
+
+
+        
+    });
+
+
+    </script>
+      <section class="gallery">
+    <div class="container top">
+      <div class="heading">
+        <h1>PHOTOS</h1>
+        <h2>Our Gallery</h2>
+        <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+      </div>
+    </div>
+    <div class="content mtop">
+      <div class="owl-carousel owl-carousel1 owl-theme">
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-1.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-2.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights.</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-3.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights.</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-4.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-5.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights.</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-6.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-4.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-3.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights.</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-1.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights.</h3>
+          </div>
+        </div>
+        <div class="items">
+          <div class="img">
+            <img src="images/gallery-6.png" alt="">
+          </div>
+          <div class="overlay">
+            <span class="fa fa-plus"> </span>
+            <h3>Skyline Heights</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    $('.owl-carousel1').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: true,
+      dots: false,
+      autoplay: true,
+      autoplayTimeout: 1000,
+      autoplayHoverPause: true,
+      navText: ["<i class = 'fa fa-chevron-left'></i>", "<i class = 'fa fa-chevron-right'></i>"],
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 4,
+        },
+        1000: {
+          items: 6
+        }
+      }
+    })
+  </script>
+<section class="book">
+    <div class="container flex_space">
+      <div class="text">
+        <h1> <span>Book </span> Your Rooms </h1>
+      </div>
+      <div class="form">
+        <form class="grid">
+          <input type="date" placeholder="Araival Date">
+          <input type="date" placeholder="Departure Date">
+          <input type="number" placeholder="Adults">
+          <input type="number" placeholder="Childern">
+          <input type="submit" value="CHECK AVAILABILITY">
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="Customer top">
+    <div class="container">
+      <div class="owl-carousel owl-carousel2 owl-theme">
+        <div class="item">
+          <i class="fa-solid fa-quote-right"></i>
+          <p>Skyline Heights Healthcare Center is a healthcare facility specializing in skilled nursing, rehabilitation therapy, and long-term care services. It focuses on providing compassionate, personalized care in a comfortable and supportive environment for patients recovering or needing ongoing care.n</h3>
+          <label>Skyline Heights Healthcare </label>
+        </div>
+       
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+    $('.owl-carousel2').owlCarousel({
+      loop: true,
+      margin: 0,
+      nav: false,
+      dots: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+        768: {
+          items: 1,
+        },
+        1000: {
+          items: 1
+        }
+      }
+    })
+  </script>
+  <footer>
+    <div class="container grid">
+      <div class="box">
+        <img src="images/logo-2.png" alt="">
+        <p>Skyline Heights Apartments offers spacious living with a pet-friendly community. Located in Daly City, CA, it provides easy access to San Francisco and nearby attractions. The apartments come with modern amenities like a heated outdoor swimming pool, 24-hour fitness center, and EV charging stations. The complex is surrounded by scenic views, making it a peaceful place to live while being close to major transportation routes.
+        <div class="icon">
+          <i class="fa fa-facebook-f"></i>
+          <i class="fa fa-instagram"></i>
+          <i class="fa fa-twitter"></i>
+          <i class="fa fa-youtube"></i>
+        </div>
+      </div>
+      <div class="box">
+        <h2>Links</h2>
+        <ul>
+          <li>Company History</li>
+          <li>About Us</li>
+          <li>Contact Us</li>
+          <li>Services</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h2>Contact Us</h2>
+        <p>(Billings, Montana): A healthcare facility offering skilled nursing, rehabilitation therapy, and long-term care services, emphasizing compassionate care.
+        </p>
+        <i class="fa fa-location-dot"></i>
+        <label>chennai,coimbatore </label> <br>
+        <i class="fa fa-phone"></i>
+        <label>91 672821363</label> <br>
+        <i class="fa fa-envelope"></i>
+        <label>skylineheights@123.com</label> <br>
+      </div>
+    </div>
+  </footer>
+  <div class="legal">
+    <p class="container">Copyright (c) 2025 Copyright Holder All Rights Reserved.</p>
+  </div>
+  <script src="https://kit.fontawesome.com/032d11eac3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

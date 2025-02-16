@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 0;
+            margin: 0;
+            background: url('images/res.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #000;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: 32px;
+            color: #007BFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .input-group {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .input-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background: #0056b3;
+        }
+        .total-amount {
+            font-size: 20px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+        }
+        .green-tick {
+            display: none;
+            color: green;
+            font-size: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Room Booking Details</h2>
+        <p><strong>Room Number:</strong> <span id="roomNumber"></span></p>
+        <p><strong>Room Name:</strong> <span id="roomName"></span></p>
+        <p><strong>Amount Per Night:</strong> $<span id="roomAmount"></span></p>
+
+        <h3>Booking Information</h3>
+        <div class="input-group">
+            <label>Your Name:</label>
+            <input type="text" id="peopleName" placeholder="Enter your name">
+        </div>
+
+        <div class="input-group">
+            <label>Number of Members:</label>
+            <input type="number" id="numMembers" placeholder="Enter number of people">
+        </div>
+
+        <div class="input-group">
+            <label>Check-in Date:</label>
+            <input type="date" id="checkIn">
+        </div>
+
+        <div class="input-group">
+            <label>Check-out Date:</label>
+            <input type="date" id="checkOut">
+        </div>
+
+        <p><strong>Total Days:</strong> <span id="totalDays">0</span></p>
+        <p class="total-amount">Total Amount: $<span id="totalAmount">0</span></p>
+
+        <button class="btn" onclick="confirmOrder()">Order</button>
+
+        <div class="green-tick" id="greenTick">
+            <i class="fa fa-check-circle"></i> Thanks for the Booking Rooms...!
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomNumber = urlParams.get("room");
+            const roomName = decodeURIComponent(urlParams.get("name"));
+            const roomAmount = urlParams.get("amount");
+
+            document.getElementById("roomNumber").textContent = roomNumber || "N/A";
+            document.getElementById("roomName").textContent = roomName || "N/A";
+            document.getElementById("roomAmount").textContent = roomAmount || "0";
+
+            function calculateTotal() {
+                const checkIn = new Date(document.getElementById("checkIn").value);
+                const checkOut = new Date(document.getElementById("checkOut").value);
+                if (checkIn && checkOut && checkOut > checkIn) {
+                    const days = Math.ceil((checkOut - checkIn) / (1000 * 60 * 60 * 24));
+                    document.getElementById("totalDays").textContent = days;
+                    document.getElementById("totalAmount").textContent = days * parseFloat(roomAmount);
+                }
+            }
+
+            document.getElementById("checkIn").addEventListener("change", calculateTotal);
+            document.getElementById("checkOut").addEventListener("change", calculateTotal);
+
+            window.confirmOrder = function () {
+                const name = document.getElementById("peopleName").value;
+                const numMembers = document.getElementById("numMembers").value;
+                const checkIn = document.getElementById("checkIn").value;
+                const checkOut = document.getElementById("checkOut").value;
+                const totalDays = document.getElementById("totalDays").textContent;
+                const totalAmount = document.getElementById("totalAmount").textContent;
+
+                if (!name || !numMembers || !checkIn || !checkOut) {
+                    alert("Please fill all booking details.");
+                    return;
+                }
+
+                fetch("http://localhost:3000/book-room", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name: name,
+                        roomNumber: document.getElementById("roomNumber").textContent,
+                        roomName: document.getElementById("roomName").textContent,
+                        amountPerNight: document.getElementById("roomAmount").textContent,
+                        numMembers: numMembers,
+                        checkIn: checkIn,
+                        checkOut: checkOut,
+                        totalDays: totalDays,
+                        totalAmount: totalAmount
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    document.getElementById("greenTick").style.display = "block";  // Display green tick on success
+
+                    // Redirect to login page after successful booking
+                    setTimeout(() => {
+                        window.location.href = "login.html";  // Change to your desired login page path
+                    }, 2000);
+                })
+                .catch(error => console.error("Error:", error));
+            };
+        });
+    </script>
+</body>
+</html>

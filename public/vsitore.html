@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Entry - Skyline Heights</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url("images/banner-1.png") no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .form-container {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 380px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 22px;
+        }
+        .form-group {
+            text-align: left;
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .view-visitors {
+            margin-top: 15px;
+        }
+        .view-visitors a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 14px;
+        }
+        .view-visitors a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Visitor Entry</h2>
+        <form id="visitorForm">
+            <div class="form-group">
+                <label for="visitorName">Visitor Name:</label>
+                <input type="text" id="visitorName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="text" id="phoneNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="apartmentNumber">Apartment Number:</label>
+                <input type="text" id="apartmentNumber" required>
+            </div>
+
+            <div class="form-group">
+                <label for="purpose">Purpose of Visit:</label>
+                <input type="text" id="purpose" required>
+            </div>
+
+            <div class="form-group">
+                <label for="hostName">Host Name:</label>
+                <input type="text" id="hostName" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="view-visitors">
+            <a href="visitor_list.html">View Visitor List</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("visitorForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const formData = {
+                visitorName: document.getElementById("visitorName").value,
+                phoneNumber: document.getElementById("phoneNumber").value,
+                apartmentNumber: document.getElementById("apartmentNumber").value,
+                purpose: document.getElementById("purpose").value,
+                hostName: document.getElementById("hostName").value
+            };
+
+            fetch("http://localhost:3000/add-visitor", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Visitor details submitted successfully!");
+                window.location.href = "login.html"; // Redirecting to login.html
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+</body>
+</html>
